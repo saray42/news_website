@@ -1,4 +1,4 @@
-package com.news.data;
+package com.news.data.article;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

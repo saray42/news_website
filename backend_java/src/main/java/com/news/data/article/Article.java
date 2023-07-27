@@ -1,20 +1,22 @@
-package com.news.data;
+package com.news.data.article;
 
+import com.news.data.ArticleType;
+import com.news.data.Author;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.util.Set;
 
 @Entity
+@Table(name = "article")
 public class Article {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String headline;
-
-    private String byline;
 
     private String lead;
 
@@ -25,11 +27,13 @@ public class Article {
     private String picture;
 
     @CreationTimestamp
-    private LocalDateTime pointOfCreation;
+    private Instant pointOfCreation;
 
-    private long authorId;
+    @ManyToOne
+    private Author author;
 
-    private ArticleType type;
+    @ManyToMany(mappedBy = "articles")
+    private Set<ArticleType> articleType;
 
     public long getId() {
         return id;
@@ -41,14 +45,6 @@ public class Article {
 
     public void setHeadline(String headline) {
         this.headline = headline;
-    }
-
-    public String getByline() {
-        return byline;
-    }
-
-    public void setByline(String byline) {
-        this.byline = byline;
     }
 
     public String getLead() {
@@ -83,19 +79,27 @@ public class Article {
         this.picture = picture;
     }
 
-    public LocalDateTime getPointOfCreation() {
+    public Instant getPointOfCreation() {
         return pointOfCreation;
     }
 
-    public void setPointOfCreation(LocalDateTime pointOfCreation) {
+    public void setPointOfCreation(Instant pointOfCreation) {
         this.pointOfCreation = pointOfCreation;
     }
 
-    public ArticleType getType() {
-        return type;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setType(ArticleType type) {
-        this.type = type;
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Set<ArticleType> getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(Set<ArticleType> articleType) {
+        this.articleType = articleType;
     }
 }

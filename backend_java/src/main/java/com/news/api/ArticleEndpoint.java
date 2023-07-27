@@ -1,7 +1,7 @@
 package com.news.api;
 
-import com.news.data.Article;
-import com.news.data.ArticleRepository;
+import com.news.data.article.Article;
+import com.news.data.article.ArticleRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
