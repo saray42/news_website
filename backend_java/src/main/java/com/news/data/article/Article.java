@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,8 +33,8 @@ public class Article {
     @ManyToOne
     private Author author;
 
-    @ManyToMany(mappedBy = "articles")
-    private Set<ArticleType> articleType;
+    @ManyToOne
+    private ArticleType articleType;
 
     public long getId() {
         return id;
@@ -95,11 +96,11 @@ public class Article {
         this.author = author;
     }
 
-    public Set<ArticleType> getArticleType() {
+    public ArticleType getArticleType() {
         return articleType;
     }
 
-    public void setArticleType(Set<ArticleType> articleType) {
+    public void setArticleType(ArticleType articleType) {
         this.articleType = articleType;
     }
 }

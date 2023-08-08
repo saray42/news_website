@@ -10,11 +10,9 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String forename;
+    private String firstName;
 
-    private String middlename;
-
-    private String surname;
+    private String lastName;
 
     private String profilePicture;
 
@@ -23,27 +21,19 @@ public class Author {
     }
 
     public String getForename() {
-        return forename;
+        return firstName;
     }
 
     public void setForename(String forename) {
-        this.forename = forename;
-    }
-
-    public String getMiddlename() {
-        return middlename;
-    }
-
-    public void setMiddlename(String middlename) {
-        this.middlename = middlename;
+        this.firstName = forename;
     }
 
     public String getSurname() {
-        return surname;
+        return lastName;
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        this.lastName = surname;
     }
 
     public String getProfilePicture() {

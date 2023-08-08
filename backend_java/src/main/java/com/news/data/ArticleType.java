@@ -15,14 +15,6 @@ public class ArticleType {
 
     private String type;
 
-    @ManyToMany
-    @JoinTable(
-            schema = "article_article_type",
-            name = "article_article_type",
-            joinColumns = @JoinColumn(name = "article_id"),
-            inverseJoinColumns = @JoinColumn(name = "article_type_id"))
-    Set<Article> articles;
-
     public long getId() {
         return id;
     }
@@ -35,11 +27,4 @@ public class ArticleType {
         this.type = type;
     }
 
-    public Set<Article> getArticles() {
-        return articles;
-    }
-
-    public void setArticles(Set<Article> articles) {
-        this.articles = articles;
-    }
 }
