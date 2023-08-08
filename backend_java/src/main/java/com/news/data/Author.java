@@ -20,20 +20,20 @@ public class Author {
         return id;
     }
 
-    public String getForename() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setForename(String forename) {
-        this.firstName = forename;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.lastName = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getProfilePicture() {
