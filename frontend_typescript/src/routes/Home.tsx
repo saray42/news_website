@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 import getArticlesByName from "../functions/getArticlesByName";
 import getAllArticles from "../functions/getAllArticles";
 import { useEffect } from "react";
+import { articleArray } from "../types/articleArray";
 
 export default function Home(): JSX.Element {
     const { topic } = useParams();
-    const [articles, setArticles] = React.useState<JSON | undefined>();
+    const [articles, setArticles] = React.useState<articleArray | undefined>();
 
     useEffect(() => {
         const asyncUseEffect = async () => {
@@ -23,10 +24,16 @@ export default function Home(): JSX.Element {
     }, [topic]);
 
     useEffect(() => {
-        console.log(articles);
+        articles ? Object.keys(articles[0]).forEach((item, i) => (
+            <li key={i}>
+                <span>{item}</span>
+            </li>
+        )) : console.log(undefined);
     }, [articles]);
 
     return (
-        <div>{topic ? topic : "home"}</div>
+        <div>
+            home
+        </div>
     )
 }
