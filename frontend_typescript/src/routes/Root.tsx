@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Box, Grid } from '@mui/material';
-import CustomButton from "../components/CustomButton";
+import ButtonBar from "../components/ButtonBar";
 
 export default function Root(): JSX.Element {
     const newsTopics: Array<string> = ["Politics", "Sport", "World", "Science", "Tech", "Austria", "Economics"];
@@ -25,7 +25,7 @@ export default function Root(): JSX.Element {
                             <Grid item sx={{
                                 color: "white",
                             }}>
-                                <CustomButton buttonText="news" link="" />
+                                <ButtonBar buttonText="news" link="" />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -38,7 +38,7 @@ export default function Root(): JSX.Element {
                         >
                             {newsTopics.map((key: string, index: number): JSX.Element => {
                                 return (<Grid item key={key}>
-                                    <CustomButton buttonText={newsTopics[index]} link={newsTopics[index].toLowerCase()} />
+                                    <ButtonBar buttonText={newsTopics[index]} link={newsTopics[index].toLowerCase()} />
                                 </Grid>)
                             })}
                         </Grid>
@@ -63,7 +63,7 @@ export default function Root(): JSX.Element {
                 >
                     {bottomBar.map((key: string, index: number): JSX.Element => {
                         return (<Grid item key={key}>
-                            <CustomButton buttonText={bottomBar[index]} link={bottomBar[index].toLowerCase()} />
+                            <ButtonBar buttonText={bottomBar[index]} link={bottomBar[index].toLowerCase()} />
                         </Grid>)
                     })}
                 </Grid>

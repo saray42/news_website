@@ -1,5 +1,6 @@
 package com.news.api;
 
+import com.news.data.ArticleType;
 import com.news.data.article.Article;
 import com.news.data.article.ArticleRepository;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,11 @@ public class ArticleEndpoint {
         return articleRepository.findAll();
     }
 
-    List<Article> getByType() {
-        return null;
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("/type/{articleName}")
+    List<Article> getByArticlesName(@PathVariable String articleName) throws ArticleTypeNotFound {
+        return articleRepository.findByArticleType_Name(articleName)
+                .orElseThrow(ArticleTypeNotFound::new);
     }
 
     List<Article> getByDate() {

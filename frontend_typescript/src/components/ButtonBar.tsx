@@ -1,13 +1,12 @@
 import { Button } from '@mui/material';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-
 interface props {
     buttonText: string,
     link: string
 }
 
-export default function CustomButton({ buttonText, link }: props): JSX.Element {
+export default function ButtonBar({ buttonText, link }: props): JSX.Element {
     const realLink: string = `news/${link}`;
     const navigate: NavigateFunction = useNavigate();
 
@@ -21,7 +20,6 @@ export default function CustomButton({ buttonText, link }: props): JSX.Element {
             },
         }}
             onClick={(): void => {
-                console.log(realLink)
                 navigate(realLink);
             }}>
             {buttonText}

@@ -92,15 +92,7 @@ public class Article {
         return author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
     public ArticleType getArticleType() {
         return articleType;
-    }
-
-    public void setArticleType(ArticleType articleType) {
-        this.articleType = articleType;
     }
 }
