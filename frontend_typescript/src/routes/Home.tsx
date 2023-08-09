@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import getArticlesByName from "../functions/getArticlesByName";
 import getAllArticles from "../functions/getAllArticles";
 import { useEffect } from "react";
-import { articleArray } from "../types/articleArray";
+import articleArray from "../types/articleArray";
+import ArticleCard from "../components/ArticleCard";
 
 export default function Home(): JSX.Element {
     const { topic } = useParams();
@@ -24,16 +25,12 @@ export default function Home(): JSX.Element {
     }, [topic]);
 
     useEffect(() => {
-        articles ? Object.keys(articles[0]).forEach((item, i) => (
-            <li key={i}>
-                <span>{item}</span>
-            </li>
-        )) : console.log(undefined);
+        console.log(articles)
     }, [articles]);
 
     return (
         <div>
-            home
+            {articles ? <ArticleCard article={articles[0]} /> : "home"}
         </div>
     )
 }

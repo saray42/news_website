@@ -1,10 +1,6 @@
 import { Button } from '@mui/material';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-
-interface props {
-    buttonText: string,
-    link: string,
-}
+import props from '../interfaces/buttonProps';
 
 export default function ButtonGeneral({ buttonText, link }: props): JSX.Element {
     const realLink: string = `news/${link}`;

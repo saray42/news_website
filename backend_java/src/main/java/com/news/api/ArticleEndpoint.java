@@ -17,6 +17,7 @@ public class ArticleEndpoint {
         this.articleRepository = articleRepository;
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping
     List<Article> getAll() {
         return articleRepository.findAll();
