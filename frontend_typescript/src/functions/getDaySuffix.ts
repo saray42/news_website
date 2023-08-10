@@ -1,14 +1,15 @@
 import daySuffixes from "../objects/daySuffixes";
 
-export default function getDateSuffix(day: number): string {
-    switch (day.toString().length) {
+export default function getDaySuffix(day: number): string {
+    if (day > 3 && day < 21) return daySuffixes[0];
+    switch (day % 10) {
         case 1:
-            return daySuffixes[day];
-            break;
+            return daySuffixes[1];
         case 2:
-
-            break;
+            return daySuffixes[2];
+        case 3:
+            return daySuffixes[3];
         default:
-            break;
+            return daySuffixes[0];
     }
 }

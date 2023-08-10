@@ -30,12 +30,11 @@ public class ArticleEndpoint {
                 .orElseThrow(ArticleTypeNotFound::new);
     }
 
-    List<Article> getByDate() {
-        return null;
-    }
-
-    List<Article> getByAuthor() {
-        return null;
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("/article/{articleId}")
+    Article getArticleById(@PathVariable long articleId) throws ArticleNotFound {
+        return articleRepository.findById(articleId)
+                .orElseThrow(ArticleNotFound::new);
     }
 
     @PostMapping

@@ -1,18 +1,28 @@
 import { Card, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
-/* import { NavigateFunction, useNavigate } from 'react-router-dom'; */
 import props from '../interfaces/article';
 import convertISODate from '../functions/convertISODate';
+import { NavigateFunction, useNavigate, useParams } from 'react-router-dom';
 
 interface articleObject {
     article: props
 }
 
 export default function ArticleCard({ article }: articleObject): JSX.Element {
-    /* const navigate: NavigateFunction = useNavigate(); */
+    const navigate: NavigateFunction = useNavigate();
+    const { topic } = useParams();
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
+        <Card sx={(theme) => ({
+            maxWidth: 400, maxHeight: 400, boxShadow: theme.shadows[20],
+            transition: '0.2s',
+            '--joy-shadowChannel': '0 0 0',
+            '--joy-shadowRing': 'inset 0 -3px 0 rgba(0 0 0 / 0.25)',
+        })}>
+            <CardActionArea onClick={(): void => {
+                topic ?
+                    navigate(`article/${article.id}`) :
+                    navigate(`${article.articleType.name}/article/${article.id}`);
+            }}>
                 <CardMedia
                     component="img"
                     image={article.picture}

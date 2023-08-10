@@ -47,7 +47,7 @@ export default function Root(): JSX.Element {
             </Box>
 
             <Box sx={{
-                width: "100%", minHeight: "100vh"
+                width: "100%", minHeight: "90vh"
             }}>
                 <Outlet />
             </Box>
