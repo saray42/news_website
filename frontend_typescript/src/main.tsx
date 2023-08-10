@@ -9,6 +9,9 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import Article from './routes/Article';
+import Login from './routes/Login';
+import Legal from './routes/Legal';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,26 @@ const router = createBrowserRouter([
       {
         path: "/news/:topic",
         element: <Home />,
+      },
+      {
+        path: "/news/:topic/article/:id",
+        element: <Article />,
+      },
+      {
+        path: "/news/login",
+        element: <Login />,
+      },
+      {
+        path: "/news/about",
+        element: <Legal />,
+      },
+      {
+        path: "/news/contact us",
+        element: <Legal />,
+      },
+      {
+        path: "/news/terms of use",
+        element: <Legal />,
       },
     ],
   },

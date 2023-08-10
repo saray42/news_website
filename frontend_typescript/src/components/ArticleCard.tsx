@@ -13,10 +13,15 @@ export default function ArticleCard({ article }: articleObject): JSX.Element {
 
     return (
         <Card sx={(theme) => ({
-            maxWidth: 400, maxHeight: 400, boxShadow: theme.shadows[20],
+            maxWidth: 400, maxHeight: 400, 
+            boxShadow: theme.shadows[14],
             transition: '0.2s',
             '--joy-shadowChannel': '0 0 0',
             '--joy-shadowRing': 'inset 0 -3px 0 rgba(0 0 0 / 0.25)',
+            '&:hover': {
+                boxShadow: theme.shadows[24],
+                transform: 'translateY(-3px)',
+              },
         })}>
             <CardActionArea onClick={(): void => {
                 topic ?

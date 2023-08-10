@@ -9,7 +9,8 @@ export default function ErrorPage(): JSX.Element {
     return (
         <Box sx={{
             flexGrow: 1, width: "100%", height: "100vh", bgcolor: "whtite", color: "black"
-        }}>
+        }}
+        >
             <Grid container
                 direction="column"
                 justifyContent="center"
@@ -21,7 +22,7 @@ export default function ErrorPage(): JSX.Element {
             >
                 <Grid item>
                     <Typography variant="h2" gutterBottom>
-                        Oooops, something wet wrong!
+                        Oooops, something went wrong!
                     </Typography>
                 </Grid>
                 <Grid item>

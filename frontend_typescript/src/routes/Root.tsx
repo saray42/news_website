@@ -1,16 +1,17 @@
 import { Outlet } from "react-router-dom";
 import { Box, Grid } from '@mui/material';
 import ButtonBar from "../components/ButtonBar";
+import bottomBar from "../objects/bottomButtons";
+import newsTopics from "../objects/topicButtons";
 
 export default function Root(): JSX.Element {
-    const newsTopics: Array<string> = ["Politics", "Sport", "World", "Science", "Tech", "Austria", "Economics"];
-    const bottomBar: Array<string> = ["About", "Contact Us", "Terms of Use"];
 
     return (
         <>
             <Box sx={{
                 flexGrow: 1, width: "100%", bgcolor: "black", p: 2
-            }}>
+            }}
+            >
                 <Grid container
                     direction="row"
                     justifyContent="space-evenly"
@@ -24,7 +25,8 @@ export default function Root(): JSX.Element {
                         >
                             <Grid item sx={{
                                 color: "white",
-                            }}>
+                            }}
+                            >
                                 <ButtonBar buttonText="news" link="" />
                             </Grid>
                         </Grid>
@@ -38,9 +40,23 @@ export default function Root(): JSX.Element {
                         >
                             {newsTopics.map((key: string, index: number): JSX.Element => {
                                 return (<Grid item key={key}>
-                                    <ButtonBar buttonText={newsTopics[index]} link={newsTopics[index].toLowerCase()} />
+                                    <ButtonBar buttonText={newsTopics[index]} link={newsTopics[index] + "/"} />
                                 </Grid>)
                             })}
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <Grid container
+                            direction="row"
+                            justifyContent="space-evenly"
+                            alignItems="center"
+                        >
+                            <Grid item sx={{
+                                color: "white",
+                            }}
+                            >
+                                <ButtonBar buttonText="login" link="login/" />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -48,13 +64,15 @@ export default function Root(): JSX.Element {
 
             <Box sx={{
                 width: "100%", minHeight: "90vh"
-            }}>
+            }}
+            >
                 <Outlet />
             </Box>
 
             <Box sx={{
                 flexGrow: 1, width: "100%", bgcolor: "black", p: 2
-            }}>
+            }}
+            >
                 <Grid container
                     direction="row"
                     justifyContent="space-evenly"
@@ -63,7 +81,7 @@ export default function Root(): JSX.Element {
                 >
                     {bottomBar.map((key: string, index: number): JSX.Element => {
                         return (<Grid item key={key}>
-                            <ButtonBar buttonText={bottomBar[index]} link={bottomBar[index].toLowerCase()} />
+                            <ButtonBar buttonText={bottomBar[index]} link={bottomBar[index] + "/"} />
                         </Grid>)
                     })}
                 </Grid>

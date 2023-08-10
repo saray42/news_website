@@ -17,7 +17,8 @@ export default function ButtonGeneral({ buttonText, link }: props): JSX.Element 
         }}
             onClick={(): void => {
                 navigate(realLink);
-            }}>
+            }}
+        >
             {buttonText}
         </Button >
     )
