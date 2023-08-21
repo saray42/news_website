@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useEffect } from "react";
 import { useParams, useLocation, NavigateFunction, useNavigate, Location } from "react-router-dom";
-import { Box, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Grid, Typography } from "@mui/material";
 import getArticleById from "../functions/getArticleById";
 import article from "../interfaces/article";
 
@@ -26,16 +26,45 @@ export default function Article(): JSX.Element {
 
     return (
         <Box sx={{
-            flexGrow: 1, width: "100%", height: "100%", bgcolor: "white", p: 4
+            flexGrow: 1, width: "100%", height: "100%", bgcolor: "white", pb: 4, pt: 4, pl: 48, pr: 48
         }}>
             <Grid container
                 direction="row"
-                justifyContent="space-evenly"
+                justifyContent="center"
                 alignItems="center"
             >
                 {article?.id ?
-                    <Typography variant="h6" gutterBottom>{article.body}</Typography> :
-                    <Typography variant="h2" gutterBottom>This article does not exist!</Typography>}
+                    <>
+                        <Grid item>
+                            <Typography variant="h2" gutterBottom textAlign={"center"}>{article.headline}</Typography>
+                        </Grid>
+                        <Grid item>
+                            <img src={article.picture} alt="article-image" />
+                        </Grid>
+                        {article.lead ?
+                            <Grid item>
+                                <Typography variant="h6" gutterBottom textAlign={"center"}>{article.lead}</Typography>
+                            </Grid> :
+                            <></>
+                        }
+                        <Grid item>
+                            <Typography variant="body1" gutterBottom textAlign={"center"}>{article.body}</Typography>
+                        </Grid>
+                        {article.conclusion ?
+                            <Grid item>
+                                <Typography variant="h6" gutterBottom textAlign={"center"}>{article.conclusion}</Typography>
+                            </Grid> :
+                            <></>
+                        }
+                        <Grid item
+                            direction="column">
+                            <Avatar alt={`${article.author.firstName} + ${article.author.lastName}`} src={article.author.profilePicture} variant="rounded" />
+                            <Typography variant="body1" gutterBottom textAlign={"center"}>{article.author.firstName}</Typography>
+                        </Grid>
+                    </> :
+                    <Grid item>
+                        <Typography variant="h2" gutterBottom textAlign={"center"}>This article does not exist!</Typography>
+                    </Grid>}
 
             </Grid>
         </Box>

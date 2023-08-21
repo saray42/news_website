@@ -42,7 +42,6 @@ export default function Home(): JSX.Element {
                 direction="row"
                 justifyContent="space-evenly"
                 alignItems="center"
-                spacing={4}
             >
                 {articles.length > 0 ?
                     articles.map((article, key) => {

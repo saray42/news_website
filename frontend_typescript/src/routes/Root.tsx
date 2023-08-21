@@ -9,7 +9,7 @@ export default function Root(): JSX.Element {
     return (
         <>
             <Box sx={{
-                flexGrow: 1, width: "100%", bgcolor: "black", p: 2
+                flexGrow: 1, width: "100%", bgcolor: "black", p: 2, height: "8vh"
             }}
             >
                 <Grid container
@@ -70,14 +70,13 @@ export default function Root(): JSX.Element {
             </Box>
 
             <Box sx={{
-                flexGrow: 1, width: "100%", bgcolor: "black", p: 2
+                flexGrow: 1, width: "100%", bgcolor: "black", p: 2, height: "8vh"
             }}
             >
                 <Grid container
                     direction="row"
                     justifyContent="space-evenly"
                     alignItems="center"
-                    spacing={8}
                 >
                     {bottomBar.map((key: string, index: number): JSX.Element => {
                         return (<Grid item key={key}>

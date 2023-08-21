@@ -13,7 +13,7 @@ export default function ArticleCard({ article }: articleObject): JSX.Element {
 
     return (
         <Card sx={(theme) => ({
-            maxWidth: 400, maxHeight: 400, 
+            width: 400, height: 400,
             boxShadow: theme.shadows[14],
             transition: '0.2s',
             '--joy-shadowChannel': '0 0 0',
@@ -21,24 +21,30 @@ export default function ArticleCard({ article }: articleObject): JSX.Element {
             '&:hover': {
                 boxShadow: theme.shadows[24],
                 transform: 'translateY(-3px)',
-              },
+            },
         })}>
             <CardActionArea onClick={(): void => {
                 topic ?
                     navigate(`article/${article.id}`) :
                     navigate(`${article.articleType.name}/article/${article.id}`);
-            }}>
+            }}
+                sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "stretch"
+                }}>
                 <CardMedia
                     component="img"
                     image={article.picture}
                     alt="article picture"
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        Article from {convertISODate(article.pointOfCreation)}
+                    <Typography gutterBottom variant="h6">
+                        {article.headline}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {article.headline}
+                        Article from {convertISODate(article.pointOfCreation)}
                     </Typography>
                 </CardContent>
             </CardActionArea>
