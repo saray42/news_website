@@ -12,7 +12,7 @@ export default function Login(): JSX.Element {
                 spacing={4}
             >
                 <Grid item>
-                    <Typography variant="h2" gutterBottom>
+                    <Typography variant="h2">
                         This is login! WIP
                     </Typography>
                 </Grid>

@@ -57,12 +57,25 @@ export default function Article(): JSX.Element {
                             <></>
                         }
                         <Grid item
-                            direction="column">
-                            <Avatar alt={`${article.author.firstName} + ${article.author.lastName}`} src={article.author.profilePicture} variant="rounded" />
-                            <Typography variant="body1" gutterBottom textAlign={"center"}>{article.author.firstName}</Typography>
+                            container
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                            sx={{ p: 4 }}
+                        >
+                            <Grid item>
+                                <Typography variant="body1" textAlign={"center"}>{"Written by " + article.author.firstName + " " + article.author.lastName}</Typography>
+                            </Grid>
+                            <Grid item
+                                sx={{ p: 1 }}
+                            >
+                                <Avatar alt={`${article.author.firstName} + ${article.author.lastName}`} src={article.author.profilePicture} variant="rounded" />
+                            </Grid>
                         </Grid>
                     </> :
-                    <Grid item>
+                    <Grid item
+                        sx={{ alignSelf: "flex-start" }}
+                    >
                         <Typography variant="h2" gutterBottom textAlign={"center"}>This article does not exist!</Typography>
                     </Grid>}
 

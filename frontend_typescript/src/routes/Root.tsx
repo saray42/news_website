@@ -36,7 +36,7 @@ export default function Root(): JSX.Element {
                             direction="row"
                             justifyContent="center"
                             alignItems="center"
-                            spacing={8}
+                            spacing={6}
                         >
                             {newsTopics.map((key: string, index: number): JSX.Element => {
                                 return (<Grid item key={key}>

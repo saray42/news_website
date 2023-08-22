@@ -29,7 +29,6 @@ export default function Home(): JSX.Element {
 
     if (topic) {
         setTimeout(() => {
-            console.log(location)
             if (!checkIfStringContainsAny(location.pathname, newsTopics)) navigate("/");
         }, 1);
     }
@@ -48,7 +47,7 @@ export default function Home(): JSX.Element {
                         return (<Grid item key={key}><ArticleCard article={article} /></Grid>)
                     }) :
                     <Grid item>
-                        <Typography variant="h2" gutterBottom>
+                        <Typography variant="h2">
                             Nothing to read on the topic {topic}!
                         </Typography>
                     </Grid>
