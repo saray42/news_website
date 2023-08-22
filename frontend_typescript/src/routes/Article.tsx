@@ -2,18 +2,23 @@ import * as React from "react"
 import { useEffect } from "react";
 import { useParams, useLocation, NavigateFunction, useNavigate, Location } from "react-router-dom";
 import { Avatar, Box, Grid, Typography } from "@mui/material";
-import getArticleById from "../functions/getArticleById";
+import getArticleById from "../functions/fetch/getArticleById";
 import article from "../interfaces/article";
+import LoadingCirlce from "../components/LoadingCirlce";
 
 export default function Article(): JSX.Element {
     const { id } = useParams();
     const location: Location = useLocation();
     const navigate: NavigateFunction = useNavigate();
     const [article, setArticle] = React.useState<article>();
+    const [loading, setLoading] = React.useState<boolean>(true);
 
     useEffect(() => {
         const asyncUseEffect = async () => {
             if (id) setArticle(await getArticleById(Number.parseInt(id)));
+            setTimeout(() => {
+                setLoading(false);
+            }, 1000);
         }
         asyncUseEffect();
     }, [id]);
@@ -24,9 +29,15 @@ export default function Article(): JSX.Element {
         }, 1);
     }
 
+    if (loading) {
+        return (
+            <LoadingCirlce />
+        )
+    }
+
     return (
         <Box sx={{
-            flexGrow: 1, width: "100%", height: "100%", bgcolor: "white", pb: 4, pt: 4, pl: 48, pr: 48
+            flexGrow: 1, width: "100%", height: "100%", bgcolor: "white", pb: 0, pt: 4, pl: 48, pr: 48
         }}>
             <Grid container
                 direction="row"
@@ -38,7 +49,9 @@ export default function Article(): JSX.Element {
                         <Grid item>
                             <Typography variant="h2" gutterBottom textAlign={"center"}>{article.headline}</Typography>
                         </Grid>
-                        <Grid item>
+                        <Grid item
+                            sx={{ p: 4 }}
+                        >
                             <img src={article.picture} alt="article-image" />
                         </Grid>
                         {article.lead ?
@@ -47,8 +60,9 @@ export default function Article(): JSX.Element {
                             </Grid> :
                             <></>
                         }
-                        <Grid item>
-                            <Typography variant="body1" gutterBottom textAlign={"center"}>{article.body}</Typography>
+                        <Grid item
+                            sx={{ pl: 16, pr: 16 }}>
+                            <Typography variant="body1" gutterBottom textAlign={"justify"}>{article.body}</Typography>
                         </Grid>
                         {article.conclusion ?
                             <Grid item>
@@ -73,9 +87,7 @@ export default function Article(): JSX.Element {
                             </Grid>
                         </Grid>
                     </> :
-                    <Grid item
-                        sx={{ alignSelf: "flex-start" }}
-                    >
+                    <Grid item>
                         <Typography variant="h2" gutterBottom textAlign={"center"}>This article does not exist!</Typography>
                     </Grid>}
 
