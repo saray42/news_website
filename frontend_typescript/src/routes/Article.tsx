@@ -5,6 +5,7 @@ import { Avatar, Box, Grid, Typography } from "@mui/material";
 import getArticleById from "../functions/fetch/getArticleById";
 import article from "../interfaces/article";
 import LoadingCirlce from "../components/LoadingCirlce";
+import newParagraphAfterDot from "../functions/newParagraphAfterDot";
 
 export default function Article(): JSX.Element {
     const { id } = useParams();
@@ -62,7 +63,7 @@ export default function Article(): JSX.Element {
                         }
                         <Grid item
                             sx={{ pl: 16, pr: 16 }}>
-                            <Typography variant="body1" gutterBottom textAlign={"justify"}>{article.body}</Typography>
+                            <Typography variant="body1" gutterBottom textAlign={"justify"}>{newParagraphAfterDot(article.body)}</Typography>
                         </Grid>
                         {article.conclusion ?
                             <Grid item>
