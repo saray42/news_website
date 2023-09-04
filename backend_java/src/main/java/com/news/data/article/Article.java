@@ -1,13 +1,11 @@
 package com.news.data.article;
 
 import com.news.data.ArticleType;
-import com.news.data.Author;
+import com.news.data.author.Author;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "article")

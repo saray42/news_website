@@ -12,6 +12,7 @@ import '@fontsource/roboto/700.css';
 import Article from './routes/Article';
 import Login from './routes/Login';
 import Legal from './routes/Legal';
+import Signup from './routes/Signup';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/news/login",
         element: <Login />,
+      },
+      {
+        path: "news/signup",
+        element: <Signup />
       },
       {
         path: "/news/about",

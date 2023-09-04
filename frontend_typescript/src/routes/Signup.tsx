@@ -3,7 +3,7 @@ import { VisibilityOff, Visibility } from "@mui/icons-material";
 import * as React from "react";
 import ButtonLogin from "../components/ButtonLogin";
 
-export default function Login(): JSX.Element {
+export default function Signup(): JSX.Element {
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -24,7 +24,37 @@ export default function Login(): JSX.Element {
             >
                 <Grid item>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                        <InputLabel htmlFor="email">Username</InputLabel>
+                        <InputLabel htmlFor="firstName">Firstname</InputLabel>
+                        <OutlinedInput
+                            id="firstName"
+                            type="text"
+                            label="Firstname"
+                        />
+                    </FormControl>
+                </Grid>
+                <Grid item>
+                    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                        <InputLabel htmlFor="lastName">Lastname</InputLabel>
+                        <OutlinedInput
+                            id="lastName"
+                            type="text"
+                            label="Lastname"
+                        />
+                    </FormControl>
+                </Grid>
+                <Grid item>
+                    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                        <InputLabel htmlFor="email">E-Mail</InputLabel>
+                        <OutlinedInput
+                            id="email"
+                            type="text"
+                            label="E-Mail"
+                        />
+                    </FormControl>
+                </Grid>
+                <Grid item>
+                    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                        <InputLabel htmlFor="username">Username</InputLabel>
                         <OutlinedInput
                             id="username"
                             type="text"
@@ -33,7 +63,7 @@ export default function Login(): JSX.Element {
                     </FormControl>
                 </Grid>
                 <Grid item>
-                    <FormControl sx={{ m: 1, width: '25ch'}} variant="outlined">
+                    <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <OutlinedInput
                             id="password"
@@ -55,7 +85,7 @@ export default function Login(): JSX.Element {
                     </FormControl>
                 </Grid>
                 <Grid item>
-                    <ButtonLogin buttonText="Login" />
+                    <ButtonLogin buttonText="Signup" />
                 </Grid>
             </Grid>
         </Box>

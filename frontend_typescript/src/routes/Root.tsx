@@ -55,7 +55,13 @@ export default function Root(): JSX.Element {
                                 color: "white",
                             }}
                             >
-                                <ButtonBar buttonText="login" link="login/" />
+                                <ButtonBar buttonText="log in" link="login/" />
+                            </Grid>
+                            <Grid item sx={{
+                                color: "white",
+                            }}
+                            >
+                                <ButtonBar buttonText="sign up" link="signup/" />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -63,7 +69,7 @@ export default function Root(): JSX.Element {
             </Box>
 
             <Box sx={{
-                width: "100%", minHeight: "90vh"
+                width: "100%", minHeight: "84vh"
             }}
             >
                 <Outlet />

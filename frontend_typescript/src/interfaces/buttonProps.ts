@@ -1,4 +1,4 @@
 export default interface buttonProps {
     buttonText: string,
-    link: string,
+    link?: string,
 }

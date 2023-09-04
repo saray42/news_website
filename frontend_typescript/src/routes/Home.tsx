@@ -33,8 +33,15 @@ export default function Home(): JSX.Element {
                 }, 1000);
             }
         }
+        setTimeout(() => {
+            if (loading) {
+                asyncUseEffect();
+            }
+        }, 15000);
         asyncUseEffect();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [topic]);
+
 
     if (topic) {
         setTimeout(() => {
@@ -50,12 +57,13 @@ export default function Home(): JSX.Element {
 
     return (
         <Box sx={{
-            flexGrow: 1, width: "100%", height: "100%", bgcolor: "white", p: 4
+            flexGrow: 1, width: "100%", minHeight: "100%", bgcolor: "white", p: 4
         }}>
             <Grid container
                 direction="row"
                 justifyContent="space-evenly"
                 alignItems="center"
+                spacing={8}
             >
                 {articles.length > 0 ?
                     articles.map((article, key) => {
