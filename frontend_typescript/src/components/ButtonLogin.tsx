@@ -1,7 +1,16 @@
 import { Button } from '@mui/material';
-import props from '../interfaces/buttonProps';
+import signup from "../functions/fetch/signup";
 
-export default function ButtonLogin({ buttonText }: props): JSX.Element {
+interface loginProps {
+    buttonText: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    changeResponse: (response: string) => void
+}
+
+export default function ButtonLogin({ buttonText, firstName, lastName, email, password, changeResponse}: loginProps): JSX.Element {
 
     return (
         <Button variant="contained" size="large" sx={{
@@ -11,6 +20,9 @@ export default function ButtonLogin({ buttonText }: props): JSX.Element {
                 bgcolor: "purple",
                 color: "white"
             },
+        }}
+        onClick={async () => {
+            changeResponse(await signup(firstName, lastName, email, password));
         }}
         >
             {buttonText}
