@@ -1,8 +1,11 @@
 package com.news.api;
 
-import com.news.data.ArticleType;
 import com.news.data.article.Article;
 import com.news.data.article.ArticleRepository;
+import com.news.data.author.Author;
+import com.news.data.author.AuthorRepository;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +17,11 @@ public class ArticleEndpoint {
 
     private final ArticleRepository articleRepository;
 
-    public ArticleEndpoint(ArticleRepository articleRepository) {
+    private final AuthorRepository authorRepository;
+
+    public ArticleEndpoint(ArticleRepository articleRepository, AuthorRepository authorRepository) {
         this.articleRepository = articleRepository;
+        this.authorRepository = authorRepository;
     }
 
     @GetMapping
@@ -33,6 +39,17 @@ public class ArticleEndpoint {
     Article getArticleById(@PathVariable long articleId) throws ArticleNotFound {
         return articleRepository.findById(articleId)
                 .orElseThrow(ArticleNotFound::new);
+    }
+
+    @PostMapping("/createAuthor")
+    ResponseEntity<String> createAuthor(@RequestBody Author newAuthor) {
+        if(authorRepository.findByEmail(newAuthor.getEmail()) != null) return ResponseEntity.badRequest().body("email_already_in_use!");
+        newAuthor.setProfilePicture("http://dummyimage.com/40x40..png/c133ff/000000");
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newAuthor.getPassword());
+        newAuthor.setPassword(encodedPassword);
+        authorRepository.save(newAuthor);
+        return ResponseEntity.ok("registered_successfull!");
     }
 
     @PostMapping
