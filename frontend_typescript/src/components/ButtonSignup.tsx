@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
-import loginProps from '../interfaces/loginButtonProps';
+import signup from "../functions/fetch/signup";
+import signupProps from '../interfaces/signupButtonProps';
 import response from '../interfaces/response';
-import login from '../functions/fetch/login';
 
-export default function ButtonLogin({ buttonText, email, password, changeResponse}: loginProps): JSX.Element {
+export default function ButtonSignup({ buttonText, firstName, lastName, email, password, changeResponse, disabled}: signupProps): JSX.Element {
 
     return (
         <Button variant="contained" size="large" sx={{
@@ -14,9 +14,10 @@ export default function ButtonLogin({ buttonText, email, password, changeRespons
                 color: "white"
             },
         }}
+        disabled={disabled}
         onClick={async () => {
-            const newResponse: response = await login(email, password);
-            changeResponse(newResponse);
+            const newResponse: response = await signup(firstName, lastName, email, password);
+            changeResponse(newResponse.message);
         }}
         >
             {buttonText}

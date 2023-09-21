@@ -22,11 +22,14 @@ public class NewsApiEndpoint {
 
     private final AuthorRepository authorRepository;
 
+    private final ResponseHandler responseHandler;
+
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-    public NewsApiEndpoint(ArticleRepository articleRepository, AuthorRepository authorRepository) {
+    public NewsApiEndpoint(ArticleRepository articleRepository, AuthorRepository authorRepository, ResponseHandler responseHandler) {
         this.articleRepository = articleRepository;
         this.authorRepository = authorRepository;
+        this.responseHandler = responseHandler;
     }
 
     @GetMapping("/articles/all")
@@ -46,14 +49,24 @@ public class NewsApiEndpoint {
                 .orElseThrow(ArticleNotFound::new);
     }
 
-    @PostMapping("/createAuthor")
-    ResponseEntity<Object> createAuthor(@RequestBody Author newAuthor) {
-        if(authorRepository.findByEmail(newAuthor.getEmail()) != null) return ResponseHandler.generateResponse("Email already in use!", HttpStatus.CONFLICT);
-        newAuthor.setProfilePicture("http://dummyimage.com/40x40..png/c133ff/000000");
-        String encodedPassword = bCryptPasswordEncoder.encode(newAuthor.getPassword());
-        newAuthor.setPassword(encodedPassword);
-        authorRepository.save(newAuthor);
-        return ResponseHandler.generateResponse("Successfully registered!", HttpStatus.CREATED);
+    @PostMapping("/signup")
+    ResponseEntity<Object> signup(@RequestBody Author author) {
+        if(authorRepository.findByEmail(author.getEmail()) != null) return responseHandler.generateResponse("Email already in use!", HttpStatus.CONFLICT, null);
+        author.setProfilePicture("http://dummyimage.com/40x40..png/c133ff/000000");
+        String encodedPassword = bCryptPasswordEncoder.encode(author.getPassword());
+        author.setPassword(encodedPassword);
+        authorRepository.save(author);
+        return responseHandler.generateResponse("Successfully signed up!", HttpStatus.CREATED, null);
+    }
+
+    @PostMapping("/login")
+    ResponseEntity<Object> login(@RequestBody Author author) {
+        Author foundAuthor = authorRepository.findByEmail(author.getEmail());
+        boolean matchedPassword = bCryptPasswordEncoder.matches(author.getPassword(), authorRepository.findByEmail(author.getEmail()).getPassword());
+        if(foundAuthor != null || matchedPassword) {
+            return responseHandler.generateResponse("Successfully logged in!", HttpStatus.ACCEPTED, foundAuthor.getFirstName());
+        }
+        return responseHandler.generateResponse("Either email or password is wrong!", HttpStatus.CONFLICT, null);
     }
 
     @PostMapping("/newArticle")

@@ -1,7 +1,7 @@
 import { Box, Grid, FormControl, InputLabel, OutlinedInput, IconButton, InputAdornment, Typography } from "@mui/material";
 import { VisibilityOff, Visibility, InfoOutlined } from "@mui/icons-material";
 import * as React from "react";
-import ButtonLogin from "../components/ButtonLogin";
+import ButtonSignup from "../components/ButtonSignup";
 import validateEmail from "../functions/validateEmail";
 import validatePassword from "../functions/validatePassword";
 
@@ -111,7 +111,7 @@ export default function Signup(): JSX.Element {
                     <Grid item><Typography>Password must contain at least 8 characters, 1 letter, 1 number</Typography></Grid>
                 </Grid>
                 <Grid item>
-                    <ButtonLogin buttonText="Signup" firstName={firstname} lastName={lastname} email={email} password={password} changeResponse={changeResponse} disabled={disabled} />
+                    <ButtonSignup buttonText="Signup" firstName={firstname} lastName={lastname} email={email} password={password} changeResponse={changeResponse} disabled={disabled} />
                 </Grid>
                 <Grid item>
                     <Typography>{response}</Typography>

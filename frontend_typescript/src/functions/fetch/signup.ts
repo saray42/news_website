@@ -1,7 +1,7 @@
 import response from "../../interfaces/response";
 
 export default async function signup(firstName: string, lastName: string, email: string, password: string): Promise<response> {
-    const response: Response = await fetch("http://localhost:8080/newsApi/createAuthor", {
+    const response: Response = await fetch("http://localhost:8080/newsApi/signup", {
         headers: {
             'Content-Type': 'application/json'
         },
