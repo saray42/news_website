@@ -1,4 +1,4 @@
-package com.news.api;
+package com.news.api.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

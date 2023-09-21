@@ -24,11 +24,11 @@ export default function Login(): JSX.Element {
             >
                 <Grid item>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                        <InputLabel htmlFor="email">Username</InputLabel>
+                        <InputLabel htmlFor="email">Email</InputLabel>
                         <OutlinedInput
-                            id="username"
+                            id="email"
                             type="text"
-                            label="Username"
+                            label="Email"
                         />
                     </FormControl>
                 </Grid>

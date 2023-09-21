@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-    Optional<List<Article>> findByArticleType_Name(String articleName);
+    Optional<List<Article>> findByArticleType_Name(String articleTypeName);
 }

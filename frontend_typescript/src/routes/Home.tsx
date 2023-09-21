@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useEffect } from "react";
 import { useParams, useLocation, Location, NavigateFunction, useNavigate } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
 import getArticlesByType from "../functions/fetch/getArticlesByType";
@@ -17,7 +16,7 @@ export default function Home(): JSX.Element {
     const [articles, setArticles] = React.useState<articleArray>([]);
     const [loading, setLoading] = React.useState<boolean>(true);
 
-    useEffect(() => {
+    React.useEffect(() => {
         setLoading(true);
         const asyncUseEffect = async () => {
             if (topic) {

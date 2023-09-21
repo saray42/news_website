@@ -1,5 +1,4 @@
 import * as React from "react"
-import { useEffect } from "react";
 import { useParams, useLocation, NavigateFunction, useNavigate, Location } from "react-router-dom";
 import { Avatar, Box, Grid, Typography } from "@mui/material";
 import getArticleById from "../functions/fetch/getArticleById";
@@ -14,7 +13,7 @@ export default function Article(): JSX.Element {
     const [article, setArticle] = React.useState<article>();
     const [loading, setLoading] = React.useState<boolean>(true);
 
-    useEffect(() => {
+    React.useEffect(() => {
         const asyncUseEffect = async () => {
             if (id) setArticle(await getArticleById(Number.parseInt(id)));
             setTimeout(() => {
